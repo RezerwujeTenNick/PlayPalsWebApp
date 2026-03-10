@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(printf 'VITE_API_URL=http://127.0.0.1:8000\\\\nVITE_USE_MOCK=false\\\\n')",
+      "Bash(\"c:/DEV/PlayPals/frontend/.env\")",
+      "Bash(alembic --version)",
+      "Bash(python -c \"import alembic\")",
+      "Bash(pip install:*)",
+      "Bash(alembic init:*)",
+      "Bash(\"c:/DEV/PlayPals/backend/models/tournament.py\":*)"
+    ]
+  }
+}
