@@ -150,6 +150,24 @@ export async function enrollTeam(tournamentId: number, teamId: number) {
   return data;
 }
 
+export async function getTournamentBracket(id: number) {
+  const res = await fetch(`${API_URL}/tournaments/${id}/bracket`, { headers: authHeader() });
+  if (!res.ok) return { tournament_id: id, rounds: [] };
+  return res.json();
+}
+
+export async function getTournamentSchedule(id: number) {
+  const res = await fetch(`${API_URL}/tournaments/${id}/schedule`, { headers: authHeader() });
+  if (!res.ok) return { tournament_id: id, rows: [], matches: [] };
+  return res.json();
+}
+
+export async function getTournamentProtocol(id: number) {
+  const res = await fetch(`${API_URL}/tournaments/${id}/protocol`, { headers: authHeader() });
+  if (!res.ok) return null;
+  return res.json();
+}
+
 export async function getStatus() {
   const { data } = await api.GET("/");
   return data ?? null;

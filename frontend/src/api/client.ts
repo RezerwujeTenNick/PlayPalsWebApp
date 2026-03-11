@@ -24,6 +24,9 @@ export const getTournaments = impl.getTournaments;
 export const createTournament = impl.createTournament;
 export const getTournament = impl.getTournament;
 export const enrollTeam = impl.enrollTeam;
+export const getTournamentBracket = impl.getTournamentBracket;
+export const getTournamentSchedule = impl.getTournamentSchedule;
+export const getTournamentProtocol = impl.getTournamentProtocol;
 
 // openapi-fetch instance (real only)
 export const { api } = real;

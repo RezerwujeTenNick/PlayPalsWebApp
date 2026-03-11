@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import type { Tournament, TournamentDetail } from "../../types/tournament";
 import { getStatusLabel, getStatusColor, getTypeLabel } from "../../helpers/tournamentHelpers";
 import { getTournament } from "../../api/client";
-import { Calendar, MapPin, Users, Trophy, Coins, CheckCircle, ClipboardList, Shield, Clock } from "lucide-react";
+import { Calendar, MapPin, Users, Trophy, Coins, CheckCircle, ClipboardList, Shield, Clock, ExternalLink } from "lucide-react";
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 
@@ -21,6 +22,7 @@ function formatDateTime(dateStr: string): { date: string; time: string } {
 }
 
 export default function TournamentCard({ tournament: t, canEnroll, onEnroll }: Props) {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const [detail, setDetail] = useState<TournamentDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
@@ -92,8 +94,16 @@ export default function TournamentCard({ tournament: t, canEnroll, onEnroll }: P
             </div>
           </div>
 
-          {canEnroll && (
-            <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={(e) => { e.stopPropagation(); navigate(`/tournaments/${t.id}`); }}
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              Podgląd
+            </Button>
+            {canEnroll && (
               <Button
                 variant="outline"
                 size="sm"
@@ -102,8 +112,8 @@ export default function TournamentCard({ tournament: t, canEnroll, onEnroll }: P
                 <ClipboardList className="w-3.5 h-3.5" />
                 Dołącz
               </Button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 

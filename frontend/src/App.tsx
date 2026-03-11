@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import TeamDetailPage from "./pages/TeamDetailPage";
+import TournamentDetailPage from "./pages/TournamentDetailPage";
 
 function LoginGuard() {
   const { token, loading } = useAuth();
@@ -18,6 +19,7 @@ function AppRoutes() {
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/teams/:id" element={<TeamDetailPage />} />
+        <Route path="/tournaments/:id" element={<TournamentDetailPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
